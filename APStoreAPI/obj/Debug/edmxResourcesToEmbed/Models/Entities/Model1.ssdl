@@ -6,8 +6,7 @@
     </Key>
     <Property Name="LoginName" Type="nvarchar" MaxLength="50" Nullable="false" />
     <Property Name="Pass" Type="nvarchar" MaxLength="50" Nullable="false" />
-    <Property Name="NameDisplay" Type="nvarchar" MaxLength="100" />
-    <Property Name="test" Type="int" />
+    <Property Name="NameDisplay" Type="nvarchar" MaxLength="100" Nullable="false" />
   </EntityType>
   <EntityType Name="Bill">
     <Key>
@@ -20,7 +19,7 @@
     <Property Name="DiscountCode" Type="nvarchar" MaxLength="50" Nullable="false" />
   </EntityType>
   <!--Errors Found During Generation:
-warning 6002: The table/view 'APStore.dbo.BillDetail' does not have a primary key defined. The key has been inferred and the definition was created as a read-only table/view.-->
+warning 6002: The table/view 'APStoreAPI.dbo.BillDetail' does not have a primary key defined. The key has been inferred and the definition was created as a read-only table/view.-->
   <EntityType Name="BillDetail">
     <Key>
       <PropertyRef Name="BillID" />
@@ -28,7 +27,7 @@ warning 6002: The table/view 'APStore.dbo.BillDetail' does not have a primary ke
     </Key>
     <Property Name="BillID" Type="int" Nullable="false" />
     <Property Name="ProductID" Type="int" Nullable="false" />
-    <Property Name="Quantities" Type="int" />
+    <Property Name="Quantities" Type="int" Nullable="false" />
   </EntityType>
   <EntityType Name="Cart">
     <Key>
@@ -85,7 +84,6 @@ warning 6002: The table/view 'APStore.dbo.BillDetail' does not have a primary ke
     <Property Name="Pass" Type="nvarchar" MaxLength="50" Nullable="false" />
     <Property Name="NameDisplay" Type="nvarchar" MaxLength="100" />
     <Property Name="AvartarPath" Type="nvarchar" MaxLength="500" />
-    <Property Name="Email" Type="nvarchar" MaxLength="100" Nullable="false" />
   </EntityType>
   <EntityContainer Name="APStoreModelStoreContainer">
     <EntitySet Name="AdminLogin" EntityType="Self.AdminLogin" Schema="dbo" store:Type="Tables" />

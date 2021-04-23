@@ -1,4 +1,5 @@
 ﻿using APStoreAPI.Models.Entities;
+using PagedList;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -6,12 +7,17 @@ using System.Web;
 
 namespace APStore.Models.DAO
 {
-    public class ProductDao
+    public class ProductDAO
     {
         APStoreEntities db = null;
-        public ProductDao()
+        public ProductDAO()
         {
             db = new APStoreEntities();
+        }
+        public List<Product> GetListProduct(int page, int number)
+        {
+            List<Product> list = db.Products.OrderBy(x => x.ID).ToPagedList(page, number).ToList();
+            return list;
         }
         public List<Product> ListAll()
         {

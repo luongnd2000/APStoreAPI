@@ -190,17 +190,27 @@
     <Compile Include="Common\Constant.cs" />
     <Compile Include="Common\StatusResponse.cs" />
     <Compile Include="Controllers\AdminLoginController.cs" />
+    <Compile Include="Controllers\CartController.cs" />
+    <Compile Include="Controllers\DeliveryController.cs" />
+    <Compile Include="Controllers\DiscountController.cs" />
+    <Compile Include="Controllers\FileController.cs" />
     <Compile Include="Controllers\HomeController.cs" />
+    <Compile Include="Controllers\ProductController.cs" />
+    <Compile Include="Controllers\ShopController.cs" />
+    <Compile Include="Controllers\UserController.cs" />
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
     </Compile>
     <Compile Include="Models\DAO\AdminLoginDAO.cs" />
+    <Compile Include="Controllers\BillController.cs" />
+    <Compile Include="Models\DAO\BillDAO.cs" />
+    <Compile Include="Models\DAO\BillDetailDAO.cs" />
     <Compile Include="Models\DAO\CartDAO.cs" />
     <Compile Include="Models\DAO\DeliveryDAO.cs" />
     <Compile Include="Models\DAO\DiscountDAO.cs" />
     <Compile Include="Controllers\ProductCategoryController.cs" />
     <Compile Include="Models\DAO\ProductCategoryDAO.cs" />
-    <Compile Include="Models\DAO\ProductDao.cs" />
+    <Compile Include="Models\DAO\ProductDAO.cs" />
     <Compile Include="Models\DAO\UserLoginDAO.cs" />
     <Compile Include="Models\Entities\AdminLogin.cs">
       <DependentUpon>Model1.tt</DependentUpon>
@@ -317,6 +327,7 @@
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
+    <Folder Include="Upload\Image\" />
   </ItemGroup>
   <ItemGroup>
     <Content Include="fonts\glyphicons-halflings-regular.woff2" />

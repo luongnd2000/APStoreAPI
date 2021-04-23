@@ -40,7 +40,7 @@ namespace APStore.Models.DAO
                 }
             }
         }
-        public bool Delete(int productId,string username)
+        public bool Delete(string username, int productId)
         {
             try
             {

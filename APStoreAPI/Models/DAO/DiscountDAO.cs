@@ -1,4 +1,5 @@
 ﻿using APStoreAPI.Models.Entities;
+using PagedList;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -13,7 +14,11 @@ namespace APStore.Models.DAO
         {
             db = new APStoreEntities();
         }
-
+        public List<Discount> GetListDiscount(int page, int number)
+        {
+            List<Discount> list = db.Discounts.OrderBy(x => x.ID).ToPagedList(page, number).ToList();
+            return list;
+        }
         public List<Discount> ListAll()
         {
             return db.Discounts.ToList();

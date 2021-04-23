@@ -7,7 +7,6 @@
           <ScalarProperty Name="LoginName" ColumnName="LoginName" />
           <ScalarProperty Name="Pass" ColumnName="Pass" />
           <ScalarProperty Name="NameDisplay" ColumnName="NameDisplay" />
-          <ScalarProperty Name="test" ColumnName="test" />
         </MappingFragment>
       </EntityTypeMapping>
     </EntitySetMapping>
@@ -80,7 +79,6 @@
           <ScalarProperty Name="Pass" ColumnName="Pass" />
           <ScalarProperty Name="NameDisplay" ColumnName="NameDisplay" />
           <ScalarProperty Name="AvartarPath" ColumnName="AvartarPath" />
-          <ScalarProperty Name="Email" ColumnName="Email" />
         </MappingFragment>
       </EntityTypeMapping>
     </EntitySetMapping>

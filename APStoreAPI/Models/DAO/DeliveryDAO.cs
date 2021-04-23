@@ -30,5 +30,38 @@ namespace APStore.Models.DAO
                 return false;
             }
         }
+        public bool Update(DeliveryDetail obj)
+        {
+            try
+            {
+                var temp = db.DeliveryDetails.SingleOrDefault(dis => dis.ID == obj.ID);
+                if (temp != null)
+                {
+                    if (!string.IsNullOrEmpty(obj.Name)) temp.Name = obj.Name;
+                    if (!string.IsNullOrEmpty(obj.PhoneNumber)) temp.PhoneNumber = obj.PhoneNumber;
+                    if (!string.IsNullOrEmpty(obj.Adress)) temp.Adress = obj.Adress;
+                    db.SaveChanges();
+                }
+                return true;
+            }
+            catch (Exception)
+            {
+                return false;
+            }
+        }
+        public bool Delete(string userName,int id)
+        {
+            try
+            {
+                var temp = db.DeliveryDetails.FirstOrDefault(x => x.ID == id && x.UserName == userName); 
+                db.DeliveryDetails.Remove(temp);
+                db.SaveChanges();
+                return true;
+            }
+            catch (Exception)
+            {
+                return false;
+            }
+        }
     }
 }

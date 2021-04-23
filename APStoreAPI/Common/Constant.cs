@@ -9,5 +9,6 @@ namespace APStore.Common
     {
         public static string AdminLoginSession = "ADMIN_LOGIN_SESSION";
         public static string UserLoginSession = "USER_LOGIN_SESSION";
+        public static string BASE_URL = "https://localhost:44384/";
     }
 }

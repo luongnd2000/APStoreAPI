@@ -16,6 +16,6 @@ namespace APStoreAPI.Models.Entities
     {
         public int BillID { get; set; }
         public int ProductID { get; set; }
-        public Nullable<int> Quantities { get; set; }
+        public int Quantities { get; set; }
     }
 }

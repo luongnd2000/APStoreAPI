@@ -17,6 +17,5 @@ namespace APStoreAPI.Models.Entities
         public string LoginName { get; set; }
         public string Pass { get; set; }
         public string NameDisplay { get; set; }
-        public Nullable<int> test { get; set; }
     }
 }
