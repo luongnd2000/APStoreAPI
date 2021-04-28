@@ -17,17 +17,17 @@ namespace APStore.Models.DAO
         {
             return db.DeliveryDetails.Where(x => x.UserName == username).ToList();
         }
-        public bool Create(DeliveryDetail obj)
+        public DeliveryDetail Create(DeliveryDetail obj)
         {
             try
             {
-                db.DeliveryDetails.Add(obj);
+                var delivery=db.DeliveryDetails.Add(obj);
                 db.SaveChanges();
-                return true;
+                return delivery;
             }
             catch (Exception)
             {
-                return false;
+                return null;
             }
         }
         public bool Update(DeliveryDetail obj)

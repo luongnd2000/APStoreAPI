@@ -7,9 +7,11 @@ using System.Linq;
 using System.Net;
 using System.Net.Http;
 using System.Web.Http;
+using System.Web.Http.Cors;
 
 namespace APStoreAPI.Controllers
 {
+    [EnableCors(origins: "http://localhost:3000", headers: "*", methods: "*")]
     public class DeliveryController : ApiController
     {
         [HttpGet]
@@ -22,9 +24,14 @@ namespace APStoreAPI.Controllers
         [HttpPost]
         public BaseResponse<DeliveryDetail> Create(DeliveryDetail obj)
         {
-            bool result = new DeliveryDAO().Create(obj);
-            var status = result ? StatusResponse.Success : StatusResponse.Fail;
-            BaseResponse<DeliveryDetail> response = new BaseResponse<DeliveryDetail>(status, "", null);
+            var result = new DeliveryDAO().Create(obj);
+            var list = new List<DeliveryDetail>();
+            if (result != null)
+            {
+                list.Add(result);
+            }
+            var status = result!=null ? StatusResponse.Success : StatusResponse.Fail;
+            BaseResponse<DeliveryDetail> response = new BaseResponse<DeliveryDetail>(status, "", list);
             return response;
         }
         [HttpPut]

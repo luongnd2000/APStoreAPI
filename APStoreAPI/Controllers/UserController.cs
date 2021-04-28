@@ -7,12 +7,14 @@ using System.Linq;
 using System.Net;
 using System.Net.Http;
 using System.Web.Http;
+using System.Web.Http.Cors;
 
 namespace APStoreAPI.Controllers
 {
+    [EnableCors(origins: "http://localhost:3000", headers: "*", methods: "*")]
     public class UserController : ApiController
     {
-        [HttpGet]
+        [HttpPost]
         public BaseResponse<UserLogin> Login(UserLogin obj)
         {
             UserLoginDAO dao = new UserLoginDAO();
@@ -27,22 +29,22 @@ namespace APStoreAPI.Controllers
             BaseResponse<UserLogin> response = new BaseResponse<UserLogin>(StatusResponse.Success, result + "", list);
             return response;
         }
-        [HttpPost]
-        public BaseResponse<UserLogin> Register(UserLogin obj)
-        {
-            UserLoginDAO dao = new UserLoginDAO();
-            bool result = dao.Register(obj);
-            UserLogin user = null;
-            if (result == true)
-            {
-                user = dao.GetLogin(obj.Name);
-            }
-            var list = new List<UserLogin>();
-            var status = result ? StatusResponse.Success : StatusResponse.Fail;
-            list.Add(user);
-            BaseResponse<UserLogin> response = new BaseResponse<UserLogin>(status, result + "", list);
-            return response;    
-        }
+        //[HttpPost]
+        //public BaseResponse<UserLogin> Register(UserLogin obj)
+        //{
+        //    UserLoginDAO dao = new UserLoginDAO();
+        //    bool result = dao.Register(obj);
+        //    UserLogin user = null;
+        //    if (result == true)
+        //    {
+        //        user = dao.GetLogin(obj.Name);
+        //    }
+        //    var list = new List<UserLogin>();
+        //    var status = result ? StatusResponse.Success : StatusResponse.Fail;
+        //    list.Add(user);
+        //    BaseResponse<UserLogin> response = new BaseResponse<UserLogin>(status, result + "", list);
+        //    return response;    
+        //}
 
     }
 }

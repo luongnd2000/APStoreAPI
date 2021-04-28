@@ -19,11 +19,41 @@ namespace APStore.Models.DAO
             List<Product> list = db.Products.OrderBy(x => x.ID).ToPagedList(page, number).ToList();
             return list;
         }
-        public List<Product> ListAll()
+        public List<Product> ListAll(int idFilter,string searchString)
         {
-            return db.Products.ToList();
+            try
+            {
+                if (idFilter == 0)
+                {
+                    if (string.IsNullOrEmpty(searchString))
+                    {
+                    return db.Products.ToList();
+
+                    }
+                    else
+                    {
+                        return db.Products.Where(x => x.Name.Contains(searchString)).ToList();
+                    }
+                }
+
+                else
+                {
+                    if (string.IsNullOrEmpty(searchString))
+                    {
+                        return db.Products.Where(x => x.CategoryID == idFilter).ToList();
+                    }
+                    else
+                    {
+                        return db.Products.Where(x => x.CategoryID == idFilter&& x.Name.Contains(searchString)).ToList();
+                    }
+                }
+            }
+            catch (Exception e)
+            {
+                return null;
+            }
         }
-        public bool Create(Product  obj)
+        public bool Create(Product obj)
         {
             try
             {
@@ -52,7 +82,15 @@ namespace APStore.Models.DAO
         }
         public Product Get(int id)
         {
-            return db.Products.Find(id);
+            try
+            {
+                return db.Products.Find(id);
+
+            }
+            catch (Exception e)
+            {
+                return null;
+            }
         }
         public bool Update(Product obj)
         {

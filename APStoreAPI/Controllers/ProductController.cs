@@ -11,9 +11,12 @@ using System.Net.Http;
 using System.Threading.Tasks;
 using System.Web;
 using System.Web.Http;
+using System.Web.Http.Cors;
 
 namespace APStoreAPI.Controllers
 {
+
+    [EnableCors(origins: "http://localhost:3000", headers: "*", methods: "*")]
     public class ProductController : ApiController
     {
         [HttpGet]
@@ -32,9 +35,9 @@ namespace APStoreAPI.Controllers
             return response;
         }
         [HttpGet]
-        public BaseResponse<Product> GetAll()
+        public BaseResponse<Product> GetAll(int idFilter,string searchString)
         {
-            var list = new ProductDAO().ListAll();
+            var list = new ProductDAO().ListAll(idFilter,searchString);
             BaseResponse<Product> response = new BaseResponse<Product>(StatusResponse.Success, "", list);
             return response;
         }

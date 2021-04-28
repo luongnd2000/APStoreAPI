@@ -19,6 +19,7 @@ namespace APStore.Models.DAO
         {
             db = new APStoreEntities();
         }
+
         public LoginStatus Login(AdminLogin login)
         {
             var result = db.AdminLogins.SingleOrDefault(x => x.LoginName == login.LoginName);

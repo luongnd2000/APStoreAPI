@@ -40,6 +40,23 @@ namespace APStore.Models.DAO
                 }
             }
         }
+        public bool Update(Cart obj)
+        {
+            try
+            {
+                var temp = db.Carts.SingleOrDefault(dis => dis.ProductID == obj.ProductID&&dis.UserName==obj.UserName);
+                if (temp != null)
+                {
+                    temp.Quantities = obj.Quantities;
+                    db.SaveChanges();
+                }
+                return true;
+            }
+            catch (Exception)
+            {
+                return false;
+            }
+        }
         public bool Delete(string username, int productId)
         {
             try

@@ -21,7 +21,12 @@ namespace APStore.Models.DAO
         }
         public List<Discount> ListAll()
         {
-            return db.Discounts.ToList();
+            Func<Discount, bool> CheckValidDiscount=(discount)=>{
+                if (DateTime.Compare(DateTime.Now, discount.StartDate) < 0) return false;
+                if (DateTime.Compare(DateTime.Now, discount.EndDate) > 0) return false;
+                return true;
+            };
+            return db.Discounts.Where(CheckValidDiscount).ToList();
         }
         public bool Create(Discount discount)
         {

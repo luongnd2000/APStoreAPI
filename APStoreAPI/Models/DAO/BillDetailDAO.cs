@@ -1,4 +1,5 @@
-﻿using APStoreAPI.Models.Entities;
+﻿using APStore.Models.DAO;
+using APStoreAPI.Models.Entities;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -13,15 +14,19 @@ namespace APStoreAPI.Models.DAO
         {
             db = new APStoreEntities();
         }
-        public bool Create(List<BillDetail> objs)
+        public bool Create(List<BillDetail> objs,string UserName)
         {
             try
             {
                 foreach(var item in objs)
                 {
-                    db.BillDetails.Add(item);
+                    var result = new CartDAO().Delete(UserName, item.ProductID);
+                    if (result)
+                    {
+                        db.BillDetails.Add(item);
+                        db.SaveChanges();
+                    }
                 }
-                db.SaveChanges();
                 return true;
             }
             catch (Exception)

@@ -17,5 +17,10 @@ namespace APStoreAPI.Models.Entities
         public string UserName { get; set; }
         public int ProductID { get; set; }
         public Nullable<int> Quantities { get; set; }
+        public string NameDisplay { get; set; }
+        public decimal  Price { get; set; }
+        public decimal  TotalPrice { get; set; }
+        public string  Category { get; set; }
+        public string  ImagePath { get; set; }
     }
 }

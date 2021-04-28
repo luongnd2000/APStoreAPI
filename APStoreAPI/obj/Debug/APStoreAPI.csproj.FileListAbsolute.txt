@@ -208,3 +208,6 @@ D:\repos\APStoreAPI\APStoreAPI\obj\Debug\APStoreAPI.csproj.CoreCompileInputs.cac
 D:\repos\APStoreAPI\APStoreAPI\obj\Debug\APStoreAPI.csproj.CopyComplete
 D:\repos\APStoreAPI\APStoreAPI\obj\Debug\APStoreAPI.dll
 D:\repos\APStoreAPI\APStoreAPI\obj\Debug\APStoreAPI.pdb
+D:\repos\APStoreAPI\APStoreAPI\bin\System.Web.Cors.dll
+D:\repos\APStoreAPI\APStoreAPI\bin\System.Web.Http.Cors.dll
+D:\repos\APStoreAPI\APStoreAPI\bin\System.Web.Http.Cors.xml

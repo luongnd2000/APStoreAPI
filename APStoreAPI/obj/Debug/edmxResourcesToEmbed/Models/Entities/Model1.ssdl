@@ -18,8 +18,6 @@
     <Property Name="DeliveryDetailID" Type="int" Nullable="false" />
     <Property Name="DiscountCode" Type="nvarchar" MaxLength="50" Nullable="false" />
   </EntityType>
-  <!--Errors Found During Generation:
-warning 6002: The table/view 'APStoreAPI.dbo.BillDetail' does not have a primary key defined. The key has been inferred and the definition was created as a read-only table/view.-->
   <EntityType Name="BillDetail">
     <Key>
       <PropertyRef Name="BillID" />
@@ -88,18 +86,12 @@ warning 6002: The table/view 'APStoreAPI.dbo.BillDetail' does not have a primary
   <EntityContainer Name="APStoreModelStoreContainer">
     <EntitySet Name="AdminLogin" EntityType="Self.AdminLogin" Schema="dbo" store:Type="Tables" />
     <EntitySet Name="Bill" EntityType="Self.Bill" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="BillDetail" EntityType="Self.BillDetail" Schema="dbo" store:Type="Tables" />
     <EntitySet Name="Cart" EntityType="Self.Cart" Schema="dbo" store:Type="Tables" />
     <EntitySet Name="DeliveryDetail" EntityType="Self.DeliveryDetail" Schema="dbo" store:Type="Tables" />
     <EntitySet Name="Discount" EntityType="Self.Discount" Schema="dbo" store:Type="Tables" />
     <EntitySet Name="Product" EntityType="Self.Product" Schema="dbo" store:Type="Tables" />
     <EntitySet Name="ProductCategory" EntityType="Self.ProductCategory" Schema="dbo" store:Type="Tables" />
     <EntitySet Name="UserLogin" EntityType="Self.UserLogin" Schema="dbo" store:Type="Tables" />
-    <EntitySet Name="BillDetail" EntityType="Self.BillDetail" store:Type="Tables" store:Schema="dbo">
-      <DefiningQuery>SELECT 
-    [BillDetail].[BillID] AS [BillID], 
-    [BillDetail].[ProductID] AS [ProductID], 
-    [BillDetail].[Quantities] AS [Quantities]
-    FROM [dbo].[BillDetail] AS [BillDetail]</DefiningQuery>
-    </EntitySet>
   </EntityContainer>
 </Schema>

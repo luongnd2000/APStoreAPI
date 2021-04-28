@@ -14,18 +14,22 @@ namespace APStoreAPI.Models.DAO
         {
             db = new APStoreEntities();
         }
-        public bool Create(Bill obj)
+        public Bill GetBill(int id)
+        {
+            return db.Bills.SingleOrDefault(x=>x.ID==id);
+        }
+        public Bill Create(Bill obj)
         {
             try
             {
-                obj.CreatedDate = DateTime.Now;
-                db.Bills.Add(obj);
+                obj.CreatedDate =(DateTime) DateTime.Now;
+                Bill bill=db.Bills.Add(obj);
                 db.SaveChanges();
-                return true;
+                return bill;
             }
             catch (Exception)
             {
-                return false;
+                return null;
             }
         }
         public List<Bill> GetListBill(int page ,int number)

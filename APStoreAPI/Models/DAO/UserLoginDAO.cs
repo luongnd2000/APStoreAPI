@@ -15,6 +15,10 @@ namespace APStore.Models.DAO
         }
         public LoginStatus Login(UserLogin login)
         {
+            if(login == null)
+            {
+                return LoginStatus.UserNameFail;
+            }
             var result = db.UserLogins.SingleOrDefault(x => x.Name == login.Name);
             if (result == null)
             {
