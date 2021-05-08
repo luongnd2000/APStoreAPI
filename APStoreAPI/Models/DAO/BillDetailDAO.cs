@@ -39,5 +39,17 @@ namespace APStoreAPI.Models.DAO
             var list = db.BillDetails.Where(x => x.BillID == id);
             return list.ToList();
         }
+        public decimal TotalPrice(int id)
+        {
+            var list = db.BillDetails.Where(x => x.BillID == id);
+            decimal total = 0;
+            foreach(var item in list)
+            {
+                var product = new ProductDAO().Get(item.ProductID);
+                total += product.Price * (decimal)item.Quantities;
+            }
+            return total;
+        }
+        
     }
 }

@@ -19,5 +19,10 @@ namespace APStoreAPI.Models.Entities
         public string UserName { get; set; }
         public int DeliveryDetailID { get; set; }
         public string DiscountCode { get; set; }
+        public decimal TotalPrice { get; set; }
+        public string Name { get; set; }
+        public string Phone { get; set; }
+        public string Adress { get; set; }
+        public double DiscountValue { get; set; }
     }
 }

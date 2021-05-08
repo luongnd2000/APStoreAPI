@@ -1,4 +1,5 @@
-﻿using APStoreAPI.Models.Entities;
+﻿using APStoreAPI.Models.DAO;
+using APStoreAPI.Models.Entities;
 using PagedList;
 using System;
 using System.Collections.Generic;
@@ -19,7 +20,7 @@ namespace APStore.Models.DAO
             List<Product> list = db.Products.OrderBy(x => x.ID).ToPagedList(page, number).ToList();
             return list;
         }
-        public List<Product> ListAll(int idFilter,string searchString)
+        public List<Product> ListAll(int idFilter, string searchString)
         {
             try
             {
@@ -27,7 +28,7 @@ namespace APStore.Models.DAO
                 {
                     if (string.IsNullOrEmpty(searchString))
                     {
-                    return db.Products.ToList();
+                        return db.Products.ToList();
 
                     }
                     else
@@ -44,7 +45,7 @@ namespace APStore.Models.DAO
                     }
                     else
                     {
-                        return db.Products.Where(x => x.CategoryID == idFilter&& x.Name.Contains(searchString)).ToList();
+                        return db.Products.Where(x => x.CategoryID == idFilter && x.Name.Contains(searchString)).ToList();
                     }
                 }
             }
@@ -111,6 +112,42 @@ namespace APStore.Models.DAO
             {
                 return false;
             }
+        }
+        public decimal GetRevenue(int id)
+        {
+            var product = Get(id);
+            List<BillDetail> listbill = db.BillDetails.Where(x => x.ProductID == id).ToList();
+            decimal revenue = 0;
+            foreach (var item in listbill)
+            {
+                revenue += product.Price * item.Quantities;
+            }
+            return revenue;
+
+        }
+        public int GetQuantities(int id)
+        {
+            var product = Get(id);
+            List<BillDetail> listbill = db.BillDetails.Where(x => x.ProductID == id).ToList();
+            int revenue = 0;
+            foreach (var item in listbill)
+            {
+                revenue += item.Quantities;
+            }
+            return revenue;
+        }
+        public List<Product> GetRank()
+        {
+            List<Product> list = ListAll(0, "");
+            foreach (var item in list)
+            {
+                item.Total = GetRevenue(item.ID);
+                var category = new ProductCategoryDAO().Get(item.CategoryID);
+                item.CategoryName = category.Name;
+                item.TotalQuantities = GetQuantities(item.ID);
+            }
+            list = list.OrderByDescending(x=>x.Total).ToList();
+            return list;
         }
     }
 }

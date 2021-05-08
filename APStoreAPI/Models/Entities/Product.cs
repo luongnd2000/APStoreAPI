@@ -19,5 +19,8 @@ namespace APStoreAPI.Models.Entities
         public string Name { get; set; }
         public decimal Price { get; set; }
         public string ImagePath { get; set; }
+        public decimal Total { get; set; }
+        public int TotalQuantities { get; set; }
+        public string CategoryName { get; set; }
     }
 }

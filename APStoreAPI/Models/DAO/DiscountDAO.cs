@@ -41,9 +41,9 @@ namespace APStore.Models.DAO
                 return false;
             }
         }
-        public Discount Get(int id)
+        public Discount Get(string id)
         {
-            return db.Discounts.Find(id);
+            return db.Discounts.SingleOrDefault(x=>x.Code==id);
         }
         public bool Update(Discount discount)
         {

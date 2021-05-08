@@ -17,6 +17,10 @@ namespace APStore.Models.DAO
         {
             return db.DeliveryDetails.Where(x => x.UserName == username).ToList();
         }
+        public DeliveryDetail Get(int id)
+        {
+            return db.DeliveryDetails.SingleOrDefault(x => x.ID == id);
+        }
         public DeliveryDetail Create(DeliveryDetail obj)
         {
             try
